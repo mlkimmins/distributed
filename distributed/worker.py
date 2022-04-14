@@ -2059,7 +2059,8 @@ class Worker(ServerNode):
 
         ts.state = "ready"
         assert ts.priority is not None
-        heapq.heappush(self.ready, (ts.priority, ts.key))
+        # TODO MKIMMINS: THIS IS A BENCHMARKING FORK!!!!
+        heapq.heappush(self.ready, (-ts.priority, ts.key))
 
         return {}, []
 
