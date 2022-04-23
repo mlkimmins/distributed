@@ -2045,10 +2045,7 @@ class Worker(ServerNode):
         recs: Recs = {ts: "released"}
         smsg = RescheduleMsg(key=ts.key, worker=self.address)
         return recs, [smsg]
-
-    def invert(n):
-        return -n
-
+        
     def transition_waiting_ready(
         self, ts: TaskState, *, stimulus_id: str
     ) -> tuple[Recs, Instructions]:
@@ -2064,8 +2061,7 @@ class Worker(ServerNode):
         assert ts.priority is not None
         # TODO MKIMMINS: THIS IS A BENCHMARKING FORK!!!!
         # tuple[int, ...],
-        result = map(invert, ts.priority)
-        faketuple = tuple(result)
+        faketuple = tuple(map(lambda x: -x, ts.priority))
         heapq.heappush(self.ready, (faketuple, ts.key))
 
         return {}, []
