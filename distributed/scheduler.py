@@ -4027,6 +4027,8 @@ class Scheduler(SchedulerState, ServerNode):
         self.rpc.allow_offload = False
         self.status = Status.undefined
 
+        logger.info("dask.distributed.scheduler we are on Mika's questionable scheduler code")
+
     ##################
     # Administration #
     ##################

@@ -835,6 +835,8 @@ class Worker(ServerNode):
 
         Worker._instances.add(self)
 
+        logger.info("dask.distributed.worker we are on Mika's questionable worker code")
+
     ################
     # Memory manager
     ################
